@@ -14,6 +14,8 @@ import {
 
 import Link from "next/link";
 import "./globals.css";
+import { Avatar } from "@radix-ui/react-avatar";
+import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Welcome = () => {
   return (
@@ -23,6 +25,14 @@ const Welcome = () => {
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <div className="w-96 h-96 bg-indigo-400 rounded-full blur-xl opacity-40"></div>
           </div>
+          {/* <Avatar className="relative z-20">
+            <AvatarImage
+              src="/favicon.svg"
+              alt="Avatar"
+              className="w-full h-full opacity-100"
+            />
+            <AvatarFallback className="opacity-100">99</AvatarFallback>
+          </Avatar> */}
           <h1 className="text-5xl font-bold text-white relative">
             ninetynine digital
           </h1>
@@ -31,18 +41,19 @@ const Welcome = () => {
           </p>
           <p className="text-md text-gray-200 relative mt-0">
             by{" "}
-            <Link
-              href="https://dev.maxwellyoung.info"
-              className="hover:underline"
-            >
-              <HoverCard>
-                <HoverCardTrigger>Maxwell Young</HoverCardTrigger>
-                <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg bg-white text-black">
-                  Founder of{" "}
-                  <span className="font-bold">Ninetynine Digital</span>
-                </HoverCardContent>
-              </HoverCard>
-            </Link>
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <Link
+                  href="https://dev.maxwellyoung.info"
+                  className="hover:underline"
+                >
+                  Maxwell Young
+                </Link>
+              </HoverCardTrigger>
+              <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg bg-white text-black p-4 bg-opacity-50">
+                Founder of <span className="font-bold">Ninetynine Digital</span>
+              </HoverCardContent>
+            </HoverCard>
           </p>
         </div>
       </div>
@@ -57,7 +68,7 @@ const Welcome = () => {
           </p>
           <p className="text-xl text-muted-foreground italic">Coming Soon</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-5">
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">Budgeting</CardTitle>
                 <CardDescription className="text-gray-300">
@@ -70,7 +81,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">
                   Note-Taking
@@ -85,7 +96,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">
                   Mental Well-Being
@@ -107,7 +118,7 @@ const Welcome = () => {
         <div className="text-center space-y-4 relative z-10">
           <h2 className="text-4xl font-bold text-white">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-5">
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <div className="text-4xl mb-4">🔒</div>
                 <CardTitle className="text-2xl text-white">Secure</CardTitle>
@@ -119,7 +130,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <div className="text-4xl mb-4">🔍</div>
                 <CardTitle className="text-2xl text-white">Detail</CardTitle>
@@ -131,7 +142,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <div className="text-4xl mb-4">💡</div>
                 <CardTitle className="text-2xl text-white">
@@ -145,7 +156,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-indigo-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <div className="text-4xl mb-4">👥</div>
                 <CardTitle className="text-2xl text-white">

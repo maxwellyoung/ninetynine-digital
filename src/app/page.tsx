@@ -51,7 +51,7 @@ const Welcome = () => {
                 </Link>
               </HoverCardTrigger>
               <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg bg-white text-black p-4 bg-opacity-50">
-                Founder of <span className="font-bold">Ninetynine Digital</span>
+                Founder of <span className="font-bold">ninetynine digital</span>
               </HoverCardContent>
             </HoverCard>
           </p>

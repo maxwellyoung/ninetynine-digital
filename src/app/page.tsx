@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
+import Link from "next/link";
 import "./globals.css";
 
 const Welcome = () => {
@@ -22,22 +23,29 @@ const Welcome = () => {
           <p className="text-xl text-gray-200 relative">
             made with 🩵 in auckland, new zealand.
           </p>
+          <p className="text-xl text-gray-200 relative">
+            by{" "}
+            <Link
+              href="https://dev.maxwellyoung.info"
+              className="hover:underline"
+            >
+              Maxwell Young
+            </Link>
+          </p>
         </div>
       </div>
       <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-screen">
         <div className="text-center space-y-4 relative z-10">
-          <h2 className="text-4xl font-bold text-gray-700 text-balance">
+          <h2 className="text-4xl font-bold text-white">
             Introducing StudentView
           </h2>
-          <p className="text-xl text-gray-600 text-balance">
+          <p className="text-xl text-gray-200">
             The ultimate companion app for students, offering budgeting,
             note-taking, and mental well-being tools.
           </p>
-          <p className="text-xl text-muted-foreground italic text-gray-600 text-balance">
-            Coming Soon
-          </p>
+          <p className="text-xl text-muted-foreground italic">Coming Soon</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-5">
-            <Card className="bg-neutral-500 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-neutral-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">Budgeting</CardTitle>
                 <CardDescription className="text-gray-300">
@@ -50,7 +58,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-neutral-500 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-neutral-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">
                   Note-Taking
@@ -65,7 +73,7 @@ const Welcome = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-neutral-500 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
+            <Card className="bg-neutral-900 bg-opacity-70 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">
                   Mental Well-Being

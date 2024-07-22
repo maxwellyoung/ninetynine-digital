@@ -25,14 +25,6 @@ const Welcome = () => {
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <div className="w-96 h-96 bg-indigo-400 rounded-full blur-xl opacity-40"></div>
           </div>
-          {/* <Avatar className="relative z-20">
-            <AvatarImage
-              src="/favicon.svg"
-              alt="Avatar"
-              className="w-full h-full opacity-100"
-            />
-            <AvatarFallback className="opacity-100">99</AvatarFallback>
-          </Avatar> */}
           <h1 className="text-5xl font-bold text-white relative">
             ninetynine digital
           </h1>
@@ -43,11 +35,8 @@ const Welcome = () => {
             by{" "}
             <HoverCard>
               <HoverCardTrigger asChild>
-                <Link
-                  href="https://dev.maxwellyoung.info"
-                  className="hover:underline"
-                >
-                  Maxwell Young
+                <Link href="https://dev.maxwellyoung.info" legacyBehavior>
+                  <a className="hover:underline">Maxwell Young</a>
                 </Link>
               </HoverCardTrigger>
               <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg bg-white text-black p-4 bg-opacity-50">
@@ -58,16 +47,22 @@ const Welcome = () => {
         </div>
       </div>
       <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-screen">
-        <div className="text-center space-y-4 relative z-10">
+        <div className="text-center space-y-4 relative z-10 ">
           <h2 className="text-4xl font-bold text-white">
-            Introducing StudentView
+            Introducing{" "}
+            <span className="underline">
+              {" "}
+              <Link href="https://studentview.app" legacyBehavior>
+                StudentView
+              </Link>
+            </span>
           </h2>
           <p className="text-xl text-gray-200">
             The ultimate companion app for students, offering budgeting,
             note-taking, and mental well-being tools.
           </p>
-          <p className="text-xl text-muted-foreground italic">Coming Soon</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-5">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-5 mt-12">
             <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">Budgeting</CardTitle>

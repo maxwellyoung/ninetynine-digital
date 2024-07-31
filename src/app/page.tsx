@@ -31,19 +31,6 @@ const Welcome = () => {
           <p className="text-xl text-gray-200 relative mt-2">
             made with 🩵 in auckland, new zealand.
           </p>
-          <p className="text-md text-gray-200 relative mt-0">
-            by{" "}
-            <HoverCard>
-              <HoverCardTrigger asChild>
-                <Link href="https://dev.maxwellyoung.info" legacyBehavior>
-                  <a className="hover:underline">Maxwell Young</a>
-                </Link>
-              </HoverCardTrigger>
-              <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg bg-white text-black p-4 bg-opacity-50">
-                Founder of <span className="font-bold">ninetynine digital</span>
-              </HoverCardContent>
-            </HoverCard>
-          </p>
         </div>
       </div>
       <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
@@ -168,6 +155,21 @@ const Welcome = () => {
           </div>
         </div>
       </div>
+      <footer className="text-center space-y-2 relative z-10 h-4 text-white bg-gradient-animated flex flex-col justify-center items-center p-10 w-full">
+        <p className="text-md relative mt-0">
+          by{" "}
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <Link href="https://dev.maxwellyoung.info" legacyBehavior>
+                <a className="hover:underline ">Maxwell Young</a>
+              </Link>
+            </HoverCardTrigger>
+            <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg p-4 bg-opacity-50">
+              Founder of <span className="font-bold">ninetynine digital</span>
+            </HoverCardContent>
+          </HoverCard>
+        </p>
+      </footer>
     </div>
   );
 };

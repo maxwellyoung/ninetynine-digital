@@ -19,8 +19,8 @@ import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Welcome = () => {
   return (
-    <div className="font-sans">
-      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-screen">
+    <div className="font-sans overflow-x-hidden">
+      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
         <div className="text-center space-y-2 relative z-10">
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <div className="w-96 h-96 bg-indigo-400 rounded-full blur-xl opacity-40"></div>
@@ -46,7 +46,7 @@ const Welcome = () => {
           </p>
         </div>
       </div>
-      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-screen">
+      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
         <div className="text-center space-y-4 relative z-10 ">
           <h2 className="text-4xl font-bold text-white">
             Introducing{" "}
@@ -109,7 +109,7 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-screen">
+      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
         <div className="text-center space-y-4 relative z-10">
           <h2 className="text-4xl font-bold text-white">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-5">

@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Card,
   CardHeader,
@@ -14,43 +16,89 @@ import {
 
 import Link from "next/link";
 import "./globals.css";
-import { Avatar } from "@radix-ui/react-avatar";
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Welcome = () => {
   return (
     <div className="font-sans overflow-x-hidden">
-      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
+      <motion.div
+        className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="text-center space-y-2 relative z-10">
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-            <div className="w-96 h-96 bg-indigo-400 rounded-full blur-xl opacity-40"></div>
+            <motion.div
+              className="w-96 h-96 bg-indigo-400 rounded-full blur-xl opacity-40"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            ></motion.div>
           </div>
-          <h1 className="text-5xl font-bold text-white relative">
+          <motion.h1
+            className="text-5xl font-bold text-white relative"
+            initial={{ y: -20 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             ninetynine digital
-          </h1>
-          <p className="text-xl text-gray-200 relative mt-2">
+          </motion.h1>
+          <motion.p
+            className="text-xl text-gray-200 relative mt-2"
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             made with 🩵 in auckland, new zealand.
-          </p>
+          </motion.p>
         </div>
-      </div>
-      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
+      </motion.div>
+
+      <motion.div
+        className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="text-center space-y-4 relative z-10 ">
-          <h2 className="text-4xl font-bold text-white">
+          <motion.h2
+            className="text-4xl font-bold text-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             Introducing{" "}
-            <span className="underline">
-              {" "}
+            <motion.span
+              className="underline"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.8 }}
+            >
               <Link href="https://studentview.app" legacyBehavior>
                 StudentView
               </Link>
-            </span>
-          </h2>
-          <p className="text-xl text-gray-200">
+            </motion.span>
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-200"
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             The ultimate companion app for students, offering budgeting,
             note-taking, and mental well-being tools.
-          </p>
+          </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-5 mt-12">
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 p-5 mt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <CardTitle className="text-2xl text-white">Budgeting</CardTitle>
                 <CardDescription className="text-gray-300">
@@ -62,8 +110,11 @@ const Welcome = () => {
                   Track your spending, set budgets, and save money easily.
                 </p>
               </CardContent>
-            </Card>
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <CardTitle className="text-2xl text-white">
                   Note-Taking
@@ -77,8 +128,11 @@ const Welcome = () => {
                   Capture, organize, and access your notes anytime, anywhere.
                 </p>
               </CardContent>
-            </Card>
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <CardTitle className="text-2xl text-white">
                   Mental Well-Being
@@ -92,15 +146,29 @@ const Welcome = () => {
                   Access resources and tools to manage stress and stay healthy.
                 </p>
               </CardContent>
-            </Card>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-      <div className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full">
+      </motion.div>
+
+      <motion.div
+        className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="text-center space-y-4 relative z-10">
           <h2 className="text-4xl font-bold text-white">Our Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-5">
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-5"
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <div className="text-4xl mb-4">🔒</div>
                 <CardTitle className="text-2xl text-white">Secure</CardTitle>
@@ -111,8 +179,11 @@ const Welcome = () => {
                   that their information is protected at all times.
                 </p>
               </CardContent>
-            </Card>
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <div className="text-4xl mb-4">🔍</div>
                 <CardTitle className="text-2xl text-white">Detail</CardTitle>
@@ -123,8 +194,11 @@ const Welcome = () => {
                   implementation, ensuring a flawless user experience.
                 </p>
               </CardContent>
-            </Card>
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <div className="text-4xl mb-4">💡</div>
                 <CardTitle className="text-2xl text-white">
@@ -137,8 +211,11 @@ const Welcome = () => {
                   experiences with cutting-edge solutions.
                 </p>
               </CardContent>
-            </Card>
-            <Card className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-lg rounded-lg">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-600 bg-opacity-50 backdrop-blur-md shadow-inner rounded-lg"
+            >
               <CardHeader>
                 <div className="text-4xl mb-4">👥</div>
                 <CardTitle className="text-2xl text-white">
@@ -151,25 +228,29 @@ const Welcome = () => {
                   process, guiding us to create what truly matters to them.
                 </p>
               </CardContent>
-            </Card>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-      <footer className="text-center space-y-2 relative z-10 h-4 text-white bg-gradient-animated flex flex-col justify-center items-center p-10 w-full">
+      </motion.div>
+
+      <motion.footer
+        className="text-center space-y-2 relative z-10 h-4 text-white bg-gradient-animated flex flex-col justify-center items-center p-10 w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <p className="text-md relative mt-0">
           by{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <Link href="https://dev.maxwellyoung.info" legacyBehavior>
-                <a className="hover:underline ">Maxwell Young</a>
-              </Link>
+              <span className="hover:underline">Maxwell Young</span>
             </HoverCardTrigger>
-            <HoverCardContent className="backdrop-blur-md shadow-lg rounded-lg p-4 bg-opacity-50">
+            <HoverCardContent className="backdrop-blur-md shadow-inner rounded-lg p-4 bg-opacity-50">
               Founder of <span className="font-bold">ninetynine digital</span>
             </HoverCardContent>
           </HoverCard>
         </p>
-      </footer>
+      </motion.footer>
     </div>
   );
 };

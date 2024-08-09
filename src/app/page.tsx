@@ -234,7 +234,7 @@ const Welcome = () => {
       </motion.div>
 
       <motion.footer
-        className="text-center space-y-2 relative z-10 h-4 text-white bg-gradient-animated flex flex-col justify-center items-center p-10 w-full"
+        className="text-center space-y-2 relative z-10 h-4 text-white bg-gradient-animated grainy-bg flex flex-col justify-center items-center p-10 w-full"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}

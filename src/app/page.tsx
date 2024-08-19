@@ -209,22 +209,49 @@ const Welcome = () => {
 
       {/* Footer */}
       <motion.footer
-        className="text-center space-y-2 relative z-10 h-4 text-white bg-gradient-animated grainy-bg flex flex-col justify-center items-center p-10 w-full"
+        className="text-center space-y-4 relative z-10 text-white bg-gradient-animated grainy-bg flex flex-col justify-center items-center py-6 w-full"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
         <div className="max-w-5xl mx-auto">
-          <p className="text-md relative mt-0">
+          <p className="text-lg relative mt-0">
             by{" "}
             <HoverCard>
               <HoverCardTrigger asChild>
                 <span className="hover:underline">Maxwell Young</span>
               </HoverCardTrigger>
-              <HoverCardContent className="backdrop-blur-md shadow-inner rounded-lg p-4 bg-opacity-50">
+              <HoverCardContent className="backdrop-blur-lg bg-slate-600 shadow-inner rounded-lg p-4 bg-opacity-50">
                 Founder of <span className="font-bold">ninetynine digital</span>
               </HoverCardContent>
             </HoverCard>
+          </p>
+          <p className="text-lg mt-4 flex items-center justify-center">
+            Follow us on{" "}
+            <a
+              href="https://x.com/ninetyninedigi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline flex items-center ml-2"
+            >
+              <svg
+                data-testid="geist-icon"
+                height="20"
+                stroke-linejoin="round"
+                viewBox="0 0 16 16"
+                width="20"
+                style={{ color: "currentcolor" }}
+                className="mr-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.5 0.5H5.75L9.48421 5.71053L14 0.5H16L10.3895 6.97368L16.5 15.5H11.25L7.51579 10.2895L3 15.5H1L6.61053 9.02632L0.5 0.5ZM12.0204 14L3.42043 2H4.97957L13.5796 14H12.0204Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              Twitter
+            </a>
           </p>
         </div>
       </motion.footer>

@@ -7,6 +7,23 @@ export const metadata: Metadata = {
     "ninetynine digital is a forward-thinking digital agency based in Auckland, New Zealand, delivering secure, detailed, and user-centric digital experiences.",
   keywords:
     "digital agency, web development, app development, ninetynine digital, Auckland, New Zealand, innovative design, user-centric design, secure development, creative solutions",
+  openGraph: {
+    url: "https://www.ninetynine.digital",
+    title: "ninetynine digital - Innovative Digital Solutions",
+    description:
+      "ninetynine digital is a forward-thinking digital agency based in Auckland, New Zealand, delivering secure, detailed, and user-centric digital experiences.",
+    images: [
+      {
+        url: "https://www.ninetynine.digital/path/to/ninetynine-digital-preview.jpg",
+        width: 800,
+        height: 600,
+        alt: "ninetynine digital Preview",
+      },
+    ],
+  },
+  twitter: {
+    site: "@ninetyninedigi",
+  },
 };
 
 export default function RootLayout({
@@ -85,6 +102,7 @@ export default function RootLayout({
                   addressCountry: "New Zealand",
                 },
               },
+              sameAs: ["https://x.com/ninetyninedigi"],
             }),
           }}
         />

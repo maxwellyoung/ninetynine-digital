@@ -59,32 +59,35 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
 
         {/* Structured Data for SEO */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            url: "https://www.ninetynine.digital",
-            name: "ninetynine digital",
-            description:
-              "ninetynine digital is a forward-thinking digital agency based in Auckland, New Zealand, delivering secure, detailed, and user-centric digital experiences.",
-            logo: "https://www.ninetynine.digital/path/to/logo.jpg",
-            foundingDate: "2024",
-            founders: [
-              {
-                "@type": "Person",
-                name: "Maxwell Young",
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              url: "https://www.ninetynine.digital",
+              name: "ninetynine digital",
+              description:
+                "ninetynine digital is a forward-thinking digital agency based in Auckland, New Zealand, delivering secure, detailed, and user-centric digital experiences.",
+              logo: "https://www.ninetynine.digital/path/to/logo.jpg",
+              foundingDate: "2024",
+              founders: [
+                {
+                  "@type": "Person",
+                  name: "Maxwell Young",
+                },
+              ],
+              location: {
+                "@type": "Place",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Auckland",
+                  addressCountry: "New Zealand",
+                },
               },
-            ],
-            location: {
-              "@type": "Place",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Auckland",
-                addressCountry: "New Zealand",
-              },
-            },
-          })}
-        </script>
+            }),
+          }}
+        />
       </head>
       <body className="bg-background text-text font-sans">{children}</body>
     </html>

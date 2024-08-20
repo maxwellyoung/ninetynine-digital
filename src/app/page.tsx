@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, MouseEvent } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import Link from "next/link";
 import {
   HoverCard,
@@ -55,6 +55,54 @@ const Welcome = () => {
     },
   ];
 
+  function CardWithMotion({
+    title,
+    description,
+    icon,
+  }: {
+    title: string;
+    description: string;
+    icon: string;
+  }) {
+    let mouseX = useMotionValue(0);
+    let mouseY = useMotionValue(0);
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+      let { left, top } = currentTarget.getBoundingClientRect();
+      mouseX.set(clientX - left);
+      mouseY.set(clientY - top);
+    }
+
+    return (
+      <div
+        className="group relative bg-white dark:bg-[#1A1A1A] border dark:border-white/5 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+        onMouseMove={handleMouseMove}
+      >
+        <motion.div
+          className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+          style={{
+            background: useMotionTemplate`
+              radial-gradient(
+                650px circle at ${mouseX}px ${mouseY}px,
+                rgba(14, 165, 233, 0.15),
+                transparent 80%
+              )
+            `,
+          }}
+        />
+        <div className="absolute -top-8 right-8 transform rotate-12">
+          <div className="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-[#f2f2f2] dark:bg-[#242424] rounded-full shadow-md text-4xl md:text-5xl">
+            {icon}
+          </div>
+        </div>
+        <h3 className="text-2xl font-semibold text-[#171717] dark:text-white mt-12 mb-4">
+          {title}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="font-sans overflow-x-hidden">
       {/* Section 1: Header */}
@@ -64,7 +112,7 @@ const Welcome = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
       >
-        <div className="text-center space-y-2 relative z-10 max-w-5xl mx-auto">
+        <div className="text-center space-y-2 relative z-10 max-w-6xl mx-auto">
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <motion.div
               className="w-96 h-96 bg-indigo-400 rounded-full blur-xl opacity-40"
@@ -135,25 +183,12 @@ const Welcome = () => {
             transition={{ duration: 1 }}
           >
             {studentViewFeatures.map((feature, index) => (
-              <motion.div
+              <CardWithMotion
                 key={index}
-                className="relative group bg-white dark:bg-[#1A1A1A] border dark:border-white/5 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <div className="absolute -top-8 right-8 transform rotate-12">
-                  <div className="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-[#f2f2f2] dark:bg-[#242424] rounded-full shadow-md text-4xl md:text-5xl">
-                    {feature.icon}
-                  </div>
-                </div>
-                <h3 className="text-2xl font-semibold text-[#171717] dark:text-white mt-12 mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {feature.description}
-                </p>
-              </motion.div>
+                title={feature.title}
+                description={feature.description}
+                icon={feature.icon}
+              />
             ))}
           </motion.div>
         </div>
@@ -183,25 +218,12 @@ const Welcome = () => {
             transition={{ duration: 1 }}
           >
             {values.map((value, index) => (
-              <motion.div
+              <CardWithMotion
                 key={index}
-                className="relative group bg-white dark:bg-[#1A1A1A] border dark:border-white/5 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <div className="absolute -top-8 right-8 transform rotate-12">
-                  <div className="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-[#f2f2f2] dark:bg-[#242424] rounded-full shadow-md text-4xl md:text-5xl">
-                    {value.icon}
-                  </div>
-                </div>
-                <h3 className="text-2xl font-semibold text-[#171717] dark:text-white mt-12 mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {value.description}
-                </p>
-              </motion.div>
+                title={value.title}
+                description={value.description}
+                icon={value.icon}
+              />
             ))}
           </motion.div>
         </div>

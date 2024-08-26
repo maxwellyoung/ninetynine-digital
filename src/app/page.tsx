@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, MouseEvent } from "react";
+
+import React from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import Link from "next/link";
 import {
@@ -7,9 +8,76 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import "./globals.css";
+import { Twitter } from "lucide-react";
 
-const Welcome = () => {
+// Separate components for better code organization
+const CardWithMotion = ({
+  title,
+  description,
+  icon,
+}: {
+  title: string;
+  description: string;
+  icon: string;
+}) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const { currentTarget, clientX, clientY } = event;
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  };
+
+  return (
+    <div
+      className="group relative bg-white dark:bg-[#1A1A1A] border dark:border-white/5 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+      onMouseMove={handleMouseMove}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(14, 165, 233, 0.15),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      <div className="absolute -top-8 right-8 transform rotate-12">
+        <div className="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-[#f2f2f2] dark:bg-[#242424] rounded-full shadow-md text-4xl md:text-5xl">
+          {icon}
+        </div>
+      </div>
+      <h3 className="text-2xl font-semibold text-[#171717] dark:text-white mt-12 mb-4">
+        {title}
+      </h3>
+      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+    </div>
+  );
+};
+
+const Section = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <motion.div
+    className={`min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full ${className}`}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1.2 }}
+  >
+    {children}
+  </motion.div>
+);
+
+export default function Welcome() {
   const studentViewFeatures = [
     {
       title: "Budgeting",
@@ -32,7 +100,7 @@ const Welcome = () => {
     {
       title: "Secure",
       description:
-        "We prioritise the security of our users' data, ensuring that their information is protected at all times.",
+        "We prioritize the security of our users' data, ensuring that their information is protected at all times.",
       icon: "🔒",
     },
     {
@@ -55,63 +123,9 @@ const Welcome = () => {
     },
   ];
 
-  function CardWithMotion({
-    title,
-    description,
-    icon,
-  }: {
-    title: string;
-    description: string;
-    icon: string;
-  }) {
-    let mouseX = useMotionValue(0);
-    let mouseY = useMotionValue(0);
-
-    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-      let { left, top } = currentTarget.getBoundingClientRect();
-      mouseX.set(clientX - left);
-      mouseY.set(clientY - top);
-    }
-
-    return (
-      <div
-        className="group relative bg-white dark:bg-[#1A1A1A] border dark:border-white/5 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-        onMouseMove={handleMouseMove}
-      >
-        <motion.div
-          className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
-          style={{
-            background: useMotionTemplate`
-              radial-gradient(
-                650px circle at ${mouseX}px ${mouseY}px,
-                rgba(14, 165, 233, 0.15),
-                transparent 80%
-              )
-            `,
-          }}
-        />
-        <div className="absolute -top-8 right-8 transform rotate-12">
-          <div className="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-[#f2f2f2] dark:bg-[#242424] rounded-full shadow-md text-4xl md:text-5xl">
-            {icon}
-          </div>
-        </div>
-        <h3 className="text-2xl font-semibold text-[#171717] dark:text-white mt-12 mb-4">
-          {title}
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300">{description}</p>
-      </div>
-    );
-  }
-
   return (
     <div className="font-sans overflow-x-hidden">
-      {/* Section 1: Header */}
-      <motion.div
-        className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
+      <Section>
         <div className="text-center space-y-2 relative z-10 max-w-6xl mx-auto">
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <motion.div
@@ -119,10 +133,10 @@ const Welcome = () => {
               initial={{ scale: 0.7 }}
               animate={{ scale: 1.1 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-            ></motion.div>
+            />
           </div>
           <motion.h1
-            className="text-6xl font-bold text-white relative"
+            className="text-4xl md:text-6xl font-bold text-white relative"
             initial={{ y: -30 }}
             animate={{ y: 0 }}
             transition={{ duration: 1 }}
@@ -130,26 +144,20 @@ const Welcome = () => {
             ninetynine digital
           </motion.h1>
           <motion.p
-            className="text-2xl text-gray-200 relative mt-2"
+            className="text-xl md:text-2xl text-gray-200 relative mt-2"
             initial={{ y: 30 }}
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            made with 🩵 in auckland, new zealand.
+            made with <span aria-label="love">🩵</span> in auckland, new zealand.
           </motion.p>
         </div>
-      </motion.div>
+      </Section>
 
-      {/* Section 2: StudentView Features */}
-      <motion.div
-        className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
+      <Section>
         <div className="text-center space-y-4 relative z-10 max-w-5xl mx-auto">
           <motion.h2
-            className="text-5xl font-bold text-white"
+            className="text-3xl md:text-5xl font-bold text-white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -161,13 +169,11 @@ const Welcome = () => {
               animate={{ scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <Link href="https://studentview.app" legacyBehavior>
-                StudentView
-              </Link>
+              <Link href="https://studentview.app">StudentView</Link>
             </motion.span>
           </motion.h2>
           <motion.p
-            className="text-2xl text-gray-200"
+            className="text-xl md:text-2xl text-gray-200"
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -183,27 +189,16 @@ const Welcome = () => {
             transition={{ duration: 1 }}
           >
             {studentViewFeatures.map((feature, index) => (
-              <CardWithMotion
-                key={index}
-                title={feature.title}
-                description={feature.description}
-                icon={feature.icon}
-              />
+              <CardWithMotion key={index} {...feature} />
             ))}
           </motion.div>
         </div>
-      </motion.div>
+      </Section>
 
-      {/* Section 3: Company Values */}
-      <motion.div
-        className="min-h-screen bg-gradient-animated flex flex-col justify-center items-center p-10 relative w-full"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
+      <Section>
         <div className="text-center space-y-4 relative z-10 max-w-5xl mx-auto">
           <motion.h2
-            className="text-5xl font-bold text-white"
+            className="text-3xl md:text-5xl font-bold text-white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -218,18 +213,12 @@ const Welcome = () => {
             transition={{ duration: 1 }}
           >
             {values.map((value, index) => (
-              <CardWithMotion
-                key={index}
-                title={value.title}
-                description={value.description}
-                icon={value.icon}
-              />
+              <CardWithMotion key={index} {...value} />
             ))}
           </motion.div>
         </div>
-      </motion.div>
+      </Section>
 
-      {/* Footer */}
       <motion.footer
         className="text-center space-y-4 relative z-10 text-white bg-gradient-animated grainy-bg flex flex-col justify-center items-center py-6 w-full"
         initial={{ opacity: 0 }}
@@ -241,7 +230,9 @@ const Welcome = () => {
             by{" "}
             <HoverCard>
               <HoverCardTrigger asChild>
-                <span className="hover:underline">Maxwell Young</span>
+                <span className="hover:underline cursor-pointer">
+                  Maxwell Young
+                </span>
               </HoverCardTrigger>
               <HoverCardContent className="backdrop-blur-lg bg-slate-600 shadow-inner rounded-lg p-4 bg-opacity-50">
                 Founder of <span className="font-bold">ninetynine digital</span>
@@ -256,22 +247,7 @@ const Welcome = () => {
               rel="noopener noreferrer"
               className="text-blue-400 hover:underline flex items-center ml-2"
             >
-              <svg
-                data-testid="geist-icon"
-                height="20"
-                stroke-linejoin="round"
-                viewBox="0 0 16 16"
-                width="20"
-                style={{ color: "currentcolor" }}
-                className="mr-1"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M0.5 0.5H5.75L9.48421 5.71053L14 0.5H16L10.3895 6.97368L16.5 15.5H11.25L7.51579 10.2895L3 15.5H1L6.61053 9.02632L0.5 0.5ZM12.0204 14L3.42043 2H4.97957L13.5796 14H12.0204Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+              <Twitter className="w-5 h-5 mr-1" />
               Twitter
             </a>
           </p>
@@ -279,6 +255,4 @@ const Welcome = () => {
       </motion.footer>
     </div>
   );
-};
-
-export default Welcome;
+}

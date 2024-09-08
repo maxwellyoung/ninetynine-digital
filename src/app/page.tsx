@@ -21,9 +21,9 @@ const projects: Project[] = [
     color: "bg-[#FF6B6B]",
   },
   {
-    title: "CineBaby",
+    title: "CineSync",
     description:
-      "AI-powered next-generation movie idea generator for creative storytelling.",
+      "Discover your next favorite movie with CineSync's AI-powered recommendation engine.",
     link: "https://beta-brand.com",
     color: "bg-[#4ECDC4]",
   },
